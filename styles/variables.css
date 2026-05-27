@@ -9,7 +9,7 @@
     --width-block: clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.75rem);
     --bg-color: #fff;
     --border-color: #000;
-    --color_shadow: rgb(255, 255, 255, 0.5);
+    --color_shadow: #fff;
     --animation-fill-color: #FF0000;
     --contour-color: #000;
 }

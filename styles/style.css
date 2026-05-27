@@ -20,6 +20,7 @@
   flex-direction: column;
   align-items: center;
   background-color: var(--bg-color);
+  background-attachment: fixed;
 }
 .header {
   width: var(--width-block);
@@ -49,8 +50,9 @@
 }
 .post_title {
   padding: 4px 10px;
-  font-family: var(--main-fon, sans-serif);
+  font-family: var(--main-font, sans-serif);
   font-size: 18px;
+  font-variation-settings: "wght" 700;
 }
 .post_img {
   height: clamp(23.1875rem, 16.0352rem + 30.5164vw, 43.5rem);
@@ -62,9 +64,10 @@
   display: block;
 }
 .post_text {
-  font-family: var(--main-fon, sans-serif);
+  font-family: var(--main-font, sans-serif);
   font-size: 18px;
   margin: 25px;
+  font-variation-settings: "wght" 400;
 }
 .card__like-button {
   background-color: transparent;
@@ -72,23 +75,21 @@
   width: 130px;
   height: 38px;
   margin-left: 7px;
-}
-.card__like-button:focus {
-  outline: none;
-  box-shadow: 2px 2px 0 #000;
   transition: box-shadow 0.3s ease;
-} 
+}
 .button__text {
   font-family: var(--main-font-alternative, sans-serif);
   font-size: 14px;
   margin: 0;
   padding: 0;
+  color: #000;
 }
 .like {
   background-color: transparent;
   border: 2px solid transparent;
-  transition: border-color 0.3 ease;
+  transition: border-color 0.3s ease;
   outline: none;
+  height: 38px;
 }
 .like:focus-visible {
   border-color: var(--border-color);
@@ -117,10 +118,6 @@
 .like-icon:hover .main-body {
   fill: var(--contour-color);
   transition: fill 0.3s linear 0.05s;
-}
-.like-icon:hover .contour {
-  fill: var(--contour-color);
-  transition: fill 0.1s linear 0s;
 }
 .like-icon:active .core {
   fill: var(--animation-fill-color);
@@ -167,43 +164,41 @@
   top: 25px;
   right: 25px;
   z-index: 2;
-  color: rgb(0, 0, 0, 0.5);
+  opacity: 0.5;
   mix-blend-mode: hard-light;
   text-transform: uppercase;
-  -webkit-text-stroke: 1px var(--color_shadow, rgb(255, 255, 255, 0.5));
+  text-shadow: 1px var(--color_shadow, #fff);
 }
-@supports (text-stroke: 1px var(--color_shadow, rgb(255, 255, 255, 0.5))) {
+@supports (-webkit-text-stroke: 1px var(--color_shadow, #fff)) {
   .post_label {
-    text-stroke: 1px var(--color_shadow, rgb(255, 255, 255, 0.5));
+    -webkit-text-stroke: 1px var(--color_shadow, #fff);
+    text-shadow: none;
   }
 }
 .button_dialog {
-  width: 355px;
+  width: clamp(19.125rem, 18.4868rem + 2.723vw, 20.9375rem);;
   height: 55px;
-  padding: 17px 20px;
   margin-bottom: 100px;
   gap: 8px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   justify-self: center;
 }
 .button {
   background-color: var(--bg-color);
   border: var(--border-color) solid 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: var(--main-font-alternative, sans-serif);
+  font-size: 14px;
 }
 .button_hover {
-  cursor: pointer;
   z-index: 1;
   position: relative;
   overflow: hidden;
-  transition: color 0.5s ease-in-out;
-}
-.button_hover:hover {
-  color: #fff;
-}
-.button_hover:hover svg {
-  fill: #fff;
 }
 .button_hover::before {
   content: "";
@@ -213,21 +208,30 @@
   top: 0;
   right: 0;
   background-color: #000;
-  color: #fff;
-  z-index: -1;
+  z-index: 0;
   transform-origin: left;
-  transition: 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
   transform: scaleX(0);
 }
 .button_hover:hover::before {
   transform: scaleX(1);
 }
+.button_hover .button__text,
+.button_hover svg {
+  mix-blend-mode: difference;
+  z-index: 1;
+  position: relative;
+  color: #fff;
+  fill: #fff;
+}
 .dialog_text {
   font-family: var(--main-font-alternative, sans-serif);
   font-size: 14px;
+  text-transform: uppercase;
+  line-height: 150%;
 }
 .dialog {
-  width: 353px;
+  width: clamp(21.3125rem, 21.0484rem + 1.1268vw, 22.0625rem);;
   background-color: var(--bg-color);
   border: var(--border-color) solid 2px;
 }
@@ -247,6 +251,11 @@
   display: block;
   flex-shrink: 0;
 }
+.floppy_size {
+  height: 21px;
+  width: 21px;
+  display: block;
+}
 .button_close {
   width: clamp(16.3125rem, 15.6083rem + 3.0047vw, 18.3125rem);
   height: 38px;
@@ -256,11 +265,6 @@
   align-items: center;
   justify-content: center;
 }
-.button_close:focus {
-  outline: none;
-  box-shadow: 2px 2px 0 #000;
-  transition: box-shadow 0.3s ease;
-}
 .discet {
   display: flex;
   flex-direction: row;
@@ -268,7 +272,10 @@
   gap: 19px;
   margin: 30px 40px;
 }
-.filter_images {
+.button__text_uppercase {
+  text-transform: uppercase;
+}
+.filter_camper {
   filter: sepia(0.9);
 }
 .filter_frog {
@@ -294,12 +301,11 @@
 }
 @media (width <= 375px) {
   .button_dialog {
-  width: 306px;
-  height: 84px;
   flex-direction: column;
-  padding: 0;
+  height: 84px;
   }
-  .dialog {
-  width: 341px;
+  .floppy_size {
+  height: 28px;
+  width: 28px;
   }
 }
