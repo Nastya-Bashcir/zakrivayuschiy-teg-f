@@ -52,7 +52,7 @@
   padding: 4px 10px;
   font-family: var(--main-font, sans-serif);
   font-size: 18px;
-  font-variation-settings: "wght" 700;
+  font-variation-settings: "wght" 715;
 }
 .post_img {
   height: clamp(23.1875rem, 16.0352rem + 30.5164vw, 43.5rem);
@@ -67,7 +67,7 @@
   font-family: var(--main-font, sans-serif);
   font-size: 18px;
   margin: 25px;
-  font-variation-settings: "wght" 400;
+  font-variation-settings: "wght" 410;
 }
 .card__like-button {
   background-color: transparent;
@@ -234,13 +234,15 @@
   width: clamp(21.3125rem, 21.0484rem + 1.1268vw, 22.0625rem);
   background-color: var(--bg-color);
   border: var(--border-color) solid 2px;
+  padding: 30px;
+  overflow-x: hidden; 
 }
 .dialog[open] {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 0;
+  gap: 30px;
 }
 .dialog[open]::backdrop {
   background-color: rgba(0, 0, 0, 0.75);
@@ -259,44 +261,45 @@
 .button_close {
   width: clamp(16.3125rem, 15.6083rem + 3.0047vw, 18.3125rem);
   height: 38px;
-  flex-direction: end;
-  margin: 0 30px 30px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0;
 }
 .discet {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 19px;
-  margin: 30px 40px;
+  gap: 20px;
+  margin: 0;
+  width: 100%;
+  justify-content: center;
 }
 .button__text_uppercase {
   text-transform: uppercase;
 }
-.filter_camper {
+.filter_sepia {
   filter: sepia(0.9);
 }
-.filter_frog {
+.filter_blur_brightness {
   filter: blur(1px) brightness(50%);
 }
-.filter_forestspirit {
+.filter_contrast {
   filter: contrast(150%);
 }
-.filter_way {
+.filter_drop-shadow_saturate {
   filter: drop-shadow(4px 4px #FFC0CB) saturate(150%);
 }
-.filter_together {
+.filter_saturate {
   filter: saturate(250%);
 }
-.filter_warrior {
+.filter_opacity {
   filter: opacity(60%);
 }
-.filter_fairy {
+.filter_contrast_saturate {
   filter: contrast(100%) saturate(250%);
 }
-.filter_wizard {
+.filter_saturate_blur {
   filter: saturate(200%) blur(2px);
 }
 @media (width <= 375px) {
@@ -307,5 +310,8 @@
   .floppy_size {
   height: 28px;
   width: 28px;
+  }
+  .dialog[open] {
+    padding: 30px 40px;
   }
 }
