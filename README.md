@@ -1,1 +1,1 @@
-https://nastya-bashcir.github.io/zakrivayuschiy-teg-f/
+https://github.com/Nastya-Bashcir/zakrivayuschiy-teg-f
